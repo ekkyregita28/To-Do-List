@@ -1,4 +1,4 @@
-package com.example.todolist.addtask;
+package com.example.todolist.modul.addtask;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,19 +12,17 @@ import androidx.annotation.Nullable;
 
 import com.example.todolist.R;
 import com.example.todolist.base.BaseFragment;
-import com.example.todolist.home.HomeActivity;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.todolist.modul.home.HomeActivity;
 
-public class AddFragment extends BaseFragment<AddTaskActivity, AddTaskContract.Presenter> implements AddTaskContract.View {
+public class AddTaskFragment extends BaseFragment<AddTaskActivity, AddTaskContract.Presenter> implements AddTaskContract.View {
 
     EditText etTitle;
-    EditText etDate;
     EditText etDesc;
     //String email,password;
     Button btCreate;
 
 
-    public AddFragment() {
+    public AddTaskFragment() {
     }
 
     @Nullable
@@ -36,7 +34,6 @@ public class AddFragment extends BaseFragment<AddTaskActivity, AddTaskContract.P
         mPresenter.start();
 
         etTitle = fragmentView.findViewById(R.id.etTitle);
-        etDate = fragmentView.findViewById(R.id.etDate);
         etDesc = fragmentView.findViewById(R.id.etDesc);
         btCreate = fragmentView.findViewById(R.id.btCreate);
         btCreate.setOnClickListener(new View.OnClickListener() {
@@ -46,13 +43,15 @@ public class AddFragment extends BaseFragment<AddTaskActivity, AddTaskContract.P
             }
         });
 
-        setTitle("My Login View");
+        setTitle("Add New Task");
 
         return fragmentView;
     }
 
     public void setBtCreateClick(){
-        mPresenter.performHome();
+        String title = etTitle.getText().toString();
+        String description = etDesc.getText().toString();
+        mPresenter.saveData(title,description);
     }
 
     /*public void setBtLoginClick(){

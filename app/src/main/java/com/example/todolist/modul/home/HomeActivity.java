@@ -1,12 +1,12 @@
-package com.example.todolist.addtask;
+package com.example.todolist.modul.home;
 
 import android.view.View;
 
-import com.example.todolist.base.BaseFragmentHolderActivity;
+import com.example.todolist.base.*;
 
 
-public class AddTaskActivity extends BaseFragmentHolderActivity {
-    AddFragment addTaskFragment;
+public class HomeActivity extends BaseFragmentHolderActivity {
+    HomeFragment homeFragment;
     private final int UPDATE_REQUEST = 2019;
 
     @Override
@@ -18,8 +18,8 @@ public class AddTaskActivity extends BaseFragmentHolderActivity {
 //        ivIcon.setImageResource(R.drawable.....);
         ivIcon.setVisibility(View.VISIBLE);
 
-        addTaskFragment = new AddFragment();
-        setCurrentFragment(addTaskFragment, false);
+        homeFragment = new HomeFragment();
+        setCurrentFragment(homeFragment, false);
 
     }
 

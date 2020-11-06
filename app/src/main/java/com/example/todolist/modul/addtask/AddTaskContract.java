@@ -1,4 +1,4 @@
-package com.example.todolist.addtask;
+package com.example.todolist.modul.addtask;
 
 import com.example.todolist.base.BasePresenter;
 import com.example.todolist.base.BaseView;
@@ -9,6 +9,6 @@ public interface AddTaskContract {
     }
 
     interface Presenter extends BasePresenter {
-        void performHome();
+        void saveData(String title, String description);
     }
 }

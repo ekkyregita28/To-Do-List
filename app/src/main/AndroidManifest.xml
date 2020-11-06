@@ -10,15 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"></activity>
-        <activity android:name=".home.HomeActivity">
+        <activity android:name=".modul.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".addtask.AddTaskActivity"></activity>
-        <activity android:name=".updatetask.UpdateTaskActivity"></activity>
+        <activity android:name=".modul.addtask.AddTaskActivity"></activity>
+        <activity android:name=".modul.updatetask.UpdateTaskActivity"></activity>
     </application>
 
 </manifest>

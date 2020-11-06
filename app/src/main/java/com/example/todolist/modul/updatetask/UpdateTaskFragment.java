@@ -1,4 +1,4 @@
-package com.example.todolist.updatetask;
+package com.example.todolist.modul.updatetask;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,15 +12,16 @@ import androidx.annotation.Nullable;
 
 import com.example.todolist.R;
 import com.example.todolist.base.BaseFragment;
-import com.example.todolist.home.HomeActivity;
+import com.example.todolist.model.Task;
+import com.example.todolist.modul.home.HomeActivity;
 
 public class UpdateTaskFragment extends BaseFragment<UpdateTaskActivity, UpdateTaskContract.Presenter> implements UpdateTaskContract.View {
 
     EditText etTitle;
-    EditText etDate;
     EditText etDesc;
     //String email,password;
     Button btSave;
+    String id;
 
 
     public UpdateTaskFragment() {
@@ -35,7 +36,6 @@ public class UpdateTaskFragment extends BaseFragment<UpdateTaskActivity, UpdateT
         mPresenter.start();
 
         etTitle = fragmentView.findViewById(R.id.etTitle);
-        etDate = fragmentView.findViewById(R.id.etDate);
         etDesc = fragmentView.findViewById(R.id.etDesc);
         btSave = fragmentView.findViewById(R.id.btCreate);
         btSave.setOnClickListener(new View.OnClickListener() {
@@ -45,20 +45,17 @@ public class UpdateTaskFragment extends BaseFragment<UpdateTaskActivity, UpdateT
             }
         });
 
-        setTitle("My Login View");
+        setTitle("Add New Task");
+        mPresenter.loadData(this.id);
 
         return fragmentView;
     }
 
     public void setBtSaveClick(){
-        mPresenter.performHome();
+        String title = etTitle.getText().toString();
+        String description = etDesc.getText().toString();
+        mPresenter.saveData(title,description);
     }
-
-    /*public void setBtLoginClick(){
-        email = etEmail.getText().toString();
-        password = etPassword.getText().toString();
-        mPresenter.performLogin(email,password);
-    }*/
 
     @Override
     public void setPresenter(UpdateTaskContract.Presenter presenter) {
@@ -72,5 +69,15 @@ public class UpdateTaskFragment extends BaseFragment<UpdateTaskActivity, UpdateT
             activity.finish();
     }
 
+    @Override
+    public void showData(Task task) {
+        this.etTitle.setText(task.getTitle());
+        this.etDesc.setText(task.getDescription());
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id=id;
+    }
 
 }
